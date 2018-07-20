@@ -1,1 +1,1 @@
-[{"id":1,"name":"ari","username":"arisupriatna14","password":"1234","position":"dokter","isLogin":false},{"id":2,"name":"ridho","username":"ridhoseptian","password":"1122","position":"receptionist","isLogin":false}]
+[{"id":1,"name":"ari","username":"arisupriatna14","password":"1234","position":"dokter","isLogin":true},{"id":2,"name":"ridho","username":"ridhoseptian","password":"1122","position":"receptionist","isLogin":false}]

@@ -3,7 +3,8 @@ const view = require('../view/view')
 
 class EmployeeController {
   constructor() {
-    this.model = new Model()
+    this.model = new Model();
+    this._data = null;
   }
 
   showHelp() {
