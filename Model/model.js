@@ -14,3 +14,9 @@ class Employee {
     this.password = password
   }
 }
+
+
+module.exports = {
+  Patient: Patient,
+  Employee:Employee
+}
