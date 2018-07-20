@@ -1,0 +1,27 @@
+{
+  "name": "hospital-interface",
+  "version": "1.0.0",
+  "description": "hospital interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uber-fox-2018/hospital-interface.git"
+  },
+  "keywords": [
+    "hospital",
+    "interface",
+    "mvc"
+  ],
+  "author": "arisupriatna14",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uber-fox-2018/hospital-interface/issues"
+  },
+  "homepage": "https://github.com/uber-fox-2018/hospital-interface#readme",
+  "dependencies": {
+    "chalk": "^2.4.1"
+  }
+}
