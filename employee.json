@@ -1,0 +1,16 @@
+[
+  {
+    "user_name": "Udin2",
+    "my_password": "081095abc",
+    "my_position": "doctor",
+    "status_login": false,
+    "role": "doctor"
+  },
+  {
+    "user_name": "Udin33",
+    "my_password": "081095abc",
+    "my_position": "doctor",
+    "status_login": false,
+    "role": "doctor"
+  }
+]
