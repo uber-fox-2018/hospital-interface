@@ -1,0 +1,22 @@
+[
+  {
+    "nama_patient": "x",
+    "diagnosa": [
+      "batuk",
+      "flue",
+      "pilek",
+      "demam"
+    ],
+    "id": 1
+  },
+  {
+    "nama_patient": "oni",
+    "diagnosa": [
+      "batuk",
+      "flue",
+      "pilek",
+      "demam"
+    ],
+    "id": 2
+  }
+]
