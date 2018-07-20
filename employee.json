@@ -1,22 +1,23 @@
 [
   {
+    "id": 1,
     "name": "eri",
-    "position": "admin",
-    "username": "joanlamrack",
-    "password": "12345"
+    "position": "dokter",
+    "username": "eri",
+    "password": "joan"
   },
   {
     "id": 1,
-    "name": "eri2",
-    "position": "admin",
-    "username": "eri2",
-    "password": "1234566"
+    "name": "eri",
+    "position": "dokter",
+    "username": "eri",
+    "password": "joan"
   },
   {
     "id": 2,
-    "name": "budi",
-    "position": "dokter",
-    "username": "budi",
-    "password": "1234"
+    "name": "susan",
+    "position": "admin",
+    "username": "susan",
+    "password": "nio"
   }
 ]

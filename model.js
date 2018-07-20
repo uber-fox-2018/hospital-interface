@@ -30,15 +30,18 @@ class LoginSession{
 class DataDealer{
 	constructor(){
 	}
-
-	static parseData(fileDir, EndFormClass){
-		let rawData = JSON.parse(fs.readFileSync(fileDir, "utf8").toString());
-		rawData = rawData.map(ObjLiteral => {
-			let transformedObj = new EndFormClass();
-			Object.assign(transformedObj, ObjLiteral);
-			return transformedObj;
+	
+	static parseData(fileDir, EndFormClass, newObjParameters,parseHandler){
+		fs.readFile(fileDir, (err, data)=>{
+			data = JSON.parse(data.toString());
+			data = data.map(ObjLiteral => {
+				let transformedObj = new EndFormClass();
+				Object.assign(transformedObj, ObjLiteral);
+				return transformedObj;
+			});
+			
+			parseHandler(data);
 		});
-		return rawData;
 	}
 
 	static saveData(fileDir, arrOfObjToSave, messageToPrint){
@@ -50,64 +53,58 @@ class DataDealer{
 	}
 
 	static addNew(fileDir, EndFormClass, newObjParameters){
-		let dataToBeAdded = this.parseData(fileDir, EndFormClass);
-		let id = dataToBeAdded.length;
-		dataToBeAdded.push(new EndFormClass(id,...newObjParameters));
-		this.saveData(fileDir, dataToBeAdded, "Save Data Success");
-		return dataToBeAdded.length;
+		this.parseData(fileDir,EndFormClass,newObjParameters,(data)=>{
+			data.push(new EndFormClass(data.length,...newObjParameters));
+			this.saveData(fileDir,data,"Saved Successfully");
+		});
 	}
 
-	static addNewEmployee(paramForEmployee){
-		return this.addNew("./employee.json", Employee, paramForEmployee);
+	static addNewEmployee(newObjParameters){
+		this.addNew("./employee.json", Employee, newObjParameters);
 	}
 
-	static addNewPatient([nama, ...diagnosis]){
-		let loginSession = this.loadLoginSessionInfo();
-
-		if(!loginSession || loginSession[0].position !== "dokter"){
-			return "Anda tidak memiliki akses untuk menambah data pasien.";
-		}
-		else{
-			return this.addNew("./patient.json", Patient, [nama, diagnosis]);
-		}
-	}
-
-	//LOGIN RELATED
-	static login(username, password){
-		let currentSession  = this.loadLoginSessionInfo();
-		if(currentSession) DataController.printMessage("Logging out from existing session...");
-		let employeeData = this.parseData("./employee.json", Employee);
-		for(let employee of employeeData){
-			if(employee.username === username && employee.password === password){
-				this.saveData("./loginSession.json",[new LoginSession(employee.username, employee.position)],`${employee.username} logged in Successfully`);
-				return true;
+	static addNewPatient([name, ...diagnosis], newPatientCallback){
+		DataDealer.loginInfo(function([logininfo]){
+			if(logininfo.position ==="dokter"){
+				DataDealer.addNew("./patient.json", Patient, [name, diagnosis]);
 			}
-		}
-		return false;
+			else{
+				newPatientCallback("tidak memiliki akses untuk menambah pasien!");
+			}
+		});
+	}
+
+	static loginInfo(loginActionCallback){
+		this.parseData("./loginSession.json", LoginSession,null,(data)=>{
+			loginActionCallback(data);
+		});
+	}
+
+	static verifyLogin(username, password, statuscallback){
+		this.parseData("./employee.json",Employee,null, (data)=>{
+			let found = false;
+			for(let employer of data){
+				if(employer.username === username && employer.password === password){
+					found = true;
+					this.loginInfo(([logininfo])=>{
+						if(logininfo){
+							statuscallback(`${logininfo.username} still logged on. please logout first`);
+						}
+						else{
+							this.saveData("./loginSession.json",[new LoginSession(employer.username, employer.position)], `${employer.username} successfully logged in.`);
+						}
+					});
+					if(found)break;
+				}
+			}
+			
+			if(!found)statuscallback("username / password salah");
+		});
 	}
 
 	static logout(){
 		return this.saveData("./loginSession.json", [], "Logged out successfully");
 	}
 
-	static loadLoginSessionInfo(){
-		let infoSession = this.parseData("./loginSession.json",LoginSession);
-		return (infoSession.length ? infoSession : false);
-	}
-
-
 }
-
-//let param = ["eri2",  "1234566", "admin"];
-//DataDealer.addNew("./employee.json", Employee, param);
-//DataDealer.logout();
-//console.log(DataDealer.loadLoginSessionInfo());
-//console.log(DataDealer.login("joanlamrack", "12345"));
-
-//let param = ["daniel", "batuk", "pilek", "demam"];
-//DataDealer.addNewPatient(param);
-
-//console.log(DataDealer.isLoginValid("joanlamrack", "12345"));
-//console.log(DataDealer.loadLoginSessionInfo());
-//DataDealer.logout();
 module.exports = DataDealer;

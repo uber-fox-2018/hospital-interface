@@ -6,18 +6,8 @@ class DataController{
 	constructor(){
 	}
 
-	static greetUser(){
-		let sessionInfo = DataDealer.loadLoginSessionInfo();
-		DataViewer.startupGreetings(sessionInfo);
-	}
-
-	static loginTime(sessionInfo){
-		DataViewer.loginHowLongAgo(sessionInfo);
-	}
-
 	static help(){
-		let sessionInfo = DataDealer.loadLoginSessionInfo();
-		DataViewer.mainHelp(sessionInfo);
+		DataViewer.helpGeneral();
 	}
 
 	static printMessage(strMsg){
@@ -29,14 +19,15 @@ class DataController{
 	}
 
 	static login(username, password){
-		if(!DataDealer.login(username, password)){
-			DataViewer.printMessage("Invalid login");
-		}
+		DataDealer.verifyLogin(username, password, (loginStatus) => {
+			DataViewer.printMessage(loginStatus);
+		});
 	}
 
 	static addPatient(...params){
-		let result = DataDealer.addNewPatient(params);
-		if(typeof result === "string") this.printMessage(result);
+		DataDealer.addNewPatient(params,(x)=>{
+			DataViewer.printMessage(x);
+		});
 	}
 
 	static register(params){
