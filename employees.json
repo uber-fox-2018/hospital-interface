@@ -1,1 +1,1 @@
-[{"name":"testee","position":"testee","username":"testee","password":"9999","loginStatus":false},{"name":"brian","position":"admin","username":"brian","password":"1234","loginStatus":false}]
+[{"name":"testee","position":"testee","username":"testee","password":"9999","loginStatus":false},{"name":"brian","position":"doctor","username":"brian","password":"1234","loginStatus":true}]

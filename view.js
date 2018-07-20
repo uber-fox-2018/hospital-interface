@@ -8,8 +8,8 @@ class Hospital {
     console.log('node index.js logout');
   }
 
-  static added (empObj, length){
-    console.log(`${JSON.stringify(empObj)} saved succesfully. Total employee: ${length}`);
+  static added (obj, length){
+    console.log(`${JSON.stringify(obj)} saved succesfully. Total people: ${length}`);
   }
 
   static display(message){

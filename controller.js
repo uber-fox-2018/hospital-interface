@@ -56,14 +56,17 @@ class Hospital {
   }
 
   addPatient(name, diagnosis){
-    if(this.model.isDoctor){
+    if(this.model.isDoctor()){
       let newPatient = {
         name: name,
         diagnosis: diagnosis.join(', ')
       }
-      this.model.addPatient(newPatient)
+      this.model.addPatient(newPatient);
+      this.model.writeFile('patients.json', this.model.dataPatient, () => {
+        View.added (newPatient, this.model.dataPatient.length - 1)
+      })
     } else {
-      View.display(`youre not a doctor; you can't add patient!`);
+      View.display(`youre not a doctor! you can't add patient!`);
     }
   }
 

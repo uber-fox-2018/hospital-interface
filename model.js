@@ -117,6 +117,11 @@ class Hospital {
     let loggedInDoctor = this.dataEmployee.filter((user) => {
       return user.position == 'doctor' && user.loginStatus == true;
     })
+    if (loggedInDoctor.length === 0){
+      return false;
+    } else {
+      return true;
+    }
   }
   
   addPatient (obj){
