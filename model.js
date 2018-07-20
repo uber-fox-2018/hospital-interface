@@ -20,43 +20,66 @@ class Employee {
 
 class Hospital {
   constructor (){
-    this._data = null;
+    this._dataPatient = null
+    this._dataEmployee = null
   }
 
-  get data (){
-    return this._data;
+  get dataPatient (){
+    return this._dataPatient;
   }
 
-  set data (newData){
-    return this._data = newData;
+  set dataPatient (newData){
+    return this._dataPatient = newData;
   }
 
-  readFile (path, cb){
-    fs.readFile(path, 'utf8', (err, data) => {
+  get dataEmployee (){
+    return this._dataEmployee;
+  }
+
+  set dataEmployee (newData){
+    return this._dataEmployee = newData;
+  }
+
+  readFilePatient (cb){
+    fs.readFile('patients.json', 'utf8', (err, data) => {
       if (err){
         console.log(err.message);
       } else {
-        this.data = JSON.parse(data);
+        this.dataPatient = JSON.parse(data);
         cb();
       }
     })
   }
 
+  readFileEmployee (cb){
+    fs.readFile('employees.json', 'utf8', (err, data) => {
+      if (err){
+        console.log(err.message);
+      } else {
+        this.dataEmployee = JSON.parse(data);
+        cb();
+      }
+    })
+  }
+
+
   writeFile (path, data, cb){
     fs.writeFile (path, JSON.stringify(data), (err) => {
       if (err) {
         console.log(err.message)
+      } else {
+        cb()
       }
     })
   }
 
   addEmployee (empObj){
-    let newEmp = new Employee (empObj.name, empObj.role, empObj.username,empObj.pass);
-    this.data.push(newEmp);
+    let newEmp = new Employee (empObj.name, empObj.role, empObj.username,empObj.password);
+    this.dataEmployee.push(newEmp);
   }
 
   isAnotherLoggedIn (){
-    let loggedInUsers = this.data.filter((user) => {
+    let loggedInUsers = this.dataEmployee.filter((user) => {
       return user.loginStatus === true;
     })
     if (loggedInUsers.length === 0){
@@ -65,15 +88,42 @@ class Hospital {
     return true;
   }
 
-  passwordCheck (username, pass){
-    let theUser = this.data.filter((user) => {
+  passwordCheck (username, pass, cb){
+    let theUser = this.dataEmployee.filter((user) => {
       return user.username == username && user.password == pass;
     })
     if (theUser.length === 0){
-      return false;
+      cb (false);
+    } else {
+      cb (true);
     }
-    return true;
   }
+
+  loggingIn (username){
+    this.dataEmployee.forEach((user) => {
+      if (user.username == username){
+        user.loginStatus = true;
+      }
+    })
+  }
+
+  loggingOut (){
+    this.dataEmployee.forEach((user) => {
+      user.loginStatus = false;
+    })
+  }
+
+  isDoctor (){
+    let loggedInDoctor = this.dataEmployee.filter((user) => {
+      return user.position == 'doctor' && user.loginStatus == true;
+    })
+  }
+  
+  addPatient (obj){
+    let newPatient = new Patient (this.dataPatient[0].idCounter += 1, obj.name, obj.diagnosis)
+    this.dataPatient.push(newPatient);
+  }
+
 }
 
 

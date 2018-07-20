@@ -9,7 +9,11 @@ class Hospital {
   }
 
   static added (empObj, length){
-    console.log(`${JSON.stringify(empObj)} saved succesfully. Total employee: ${length}`)
+    console.log(`${JSON.stringify(empObj)} saved succesfully. Total employee: ${length}`);
+  }
+
+  static display(message){
+    console.log(message);
   }
 }
 
