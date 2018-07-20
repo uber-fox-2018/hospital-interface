@@ -12,8 +12,7 @@ class Controller {
 
     registration_employee(userName,myPassword,myPosition){
         
-        let regisData_employee = {user_name : userName, my_password : myPassword, my_position : myPosition,status_login : false,
-        role : myPosition}
+        let regisData_employee = {user_name : userName, my_password : myPassword,status_login : false,role : myPosition}
         this.model_employee.add(regisData_employee,success =>{
             view.showAddData(success)
         })
