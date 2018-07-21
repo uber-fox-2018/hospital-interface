@@ -27,8 +27,9 @@ class View {
         });
     }
 
-    static DisplayLogin(message) {
+    static Message(message) {
         console.log(message)
     }
+
 }
 module.exports = View;
