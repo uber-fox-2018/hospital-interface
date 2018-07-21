@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "udin",
+    "disease": [
+        "pusing",
+        "depresi"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "asep",
+    "disease": [
+        "demam",
+        "meriang"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "dadang",
+    "disease": [
+      "batuk",
+      "pilek",
+      "demam"
+    ]
+  }
+]

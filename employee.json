@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "username": "harles",
+    "password": 12345,
+    "role": "doctor",
+    "status_login": false
+  },
+  {
+    "id": 2,
+    "username": "bayu",
+    "password": 54321,
+    "role": "admin",
+    "status_login": false
+  },
+  {
+    "id": 3,
+    "username": "anggara",
+    "password": "67891",
+    "role": "officeboy",
+    "status_login": false
+  }
+]
