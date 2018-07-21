@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "name": "Daniel",
+    "diagnoses": [
+      "batuk",
+      "flue",
+      "pilek",
+      "demam"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Agung",
+    "diagnoses": [
+      "patah",
+      "Hati",
+      "Luka",
+      "Dalam"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "julia",
+    "diagnoses": [
+      "panas",
+      "dingin",
+      "moody"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "angga",
+    "diagnoses": [
+      "pusing",
+      "pilek",
+      "batuk"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "barbie",
+    "diagnoses": [
+      "lelah",
+      "encok"
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "username": "susan",
+    "password": "123456",
+    "role": "dokter",
+    "isLoggin": true
+  },
+  {
+    "username": "budi",
+    "password": "654321",
+    "role": "admin",
+    "isLoggin": true
+  },
+  {
+    "username": "james",
+    "password": "778899",
+    "role": "officeboy",
+    "isLoggin": true
+  },
+  {
+    "username": "susi",
+    "password": "666666",
+    "role": "receptionist",
+    "isLoggin": false
+  },
+  {
+    "username": "ana",
+    "password": "223344",
+    "role": "dokter",
+    "isLoggin": false
+  },
+  {
+    "username": "ucok",
+    "password": "001122",
+    "role": "officeboy",
+    "isLoggin": false
+  },
+  {
+    "username": "barbie",
+    "password": "554433",
+    "role": "receptionist",
+    "isLoggin": false
+  },
+  {
+    "username": "renold",
+    "password": "888888",
+    "role": "dokter",
+    "isLoggin": false
+  },
+  {
+    "username": "damdam",
+    "password": "898989",
+    "role": "officeboy",
+    "isLoggin": false
+  }
+]
