@@ -1,6 +1,5 @@
 const Controller = require('./controller.js')
 
-
 const argv = process.argv
 const execute = argv[2]
 const input = argv.slice(3)
@@ -9,9 +8,9 @@ const input = argv.slice(3)
 if (execute == 'register'){
     Controller.register_employee(input[0], input[1], input[2], input[3])
 }else if (execute == 'login'){
-    Controller.login_employee()
+    Controller.login_employee(input[0], input[1])
 }else if (execute == 'logout'){
-    Controller.logout_employee()
+    Controller.logout_employee(input[0])
 }else if (execute == 'addPatient') {
     Controller.addpatient()
 }else{
