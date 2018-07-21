@@ -11,7 +11,7 @@ class Controller {
 
     cmd(){
         if(this.command[0] == 'list-employee'){
-            this.read()
+            this.readDataEmployee()
         } else if(this.command[0] == 'register'){
             this.register()
         } else if(this.command[0] == 'login'){
@@ -19,7 +19,7 @@ class Controller {
         } else if(this.command[0] == 'logout'){
             this.logout()
         } else if(this.command[0] == 'list-patient'){
-
+            this.readDataPatient()
         } else if(this.command[0] == 'patient'){
             this.addPatient()
         }
@@ -35,8 +35,6 @@ class Controller {
                     dataLogut[i].status_login = false
                     modelEmployee.writeData(dataLogut)
                     message = 'Logut success'   
-                } else {
-                    message = 'Logut success'
                 }
                 
             }    
@@ -71,9 +69,9 @@ class Controller {
         })
     }
 
-    read(){
+    readDataEmployee(){
         modelEmployee.readData( data => {
-            View.displayData(data)
+            View.displayDataEmployee(data)
         })
     }
 
@@ -94,7 +92,39 @@ class Controller {
         })
     }
 
+    readDataPatient(){
+        modelPatient.readData( data => {
+            View.displayDataPatient(data)
+        })
+    }
+
     addPatient(){
+        modelEmployee.readData( employee => {
+            let message
+            for(let i = 0; i < employee.length; i++){
+                if(employee[i].role == 'doctor' && employee[i].status_login == true){
+                    modelPatient.readData( patient => {
+                        this.data = patient
+                        let id = patient[patient.length - 1].id + 1
+                        let newPatient = {
+                            "id" : id,
+                            "name" : this.command[1]
+                        }
+                        newPatient.disease = []
+                        for(let j = 2; j < this.command.length; j++){
+                            newPatient.disease.push(this.command[j])
+                        }
+                        this.data.push(newPatient)
+                        modelPatient.writeData(this.data)
+                        this.data = []
+                        message = 'Success add patient'
+                    })
+                } else {
+                    message = 'You are not doctor'
+                }
+            }
+            View.displayDataPatient(message)
+        })
         
     }
 

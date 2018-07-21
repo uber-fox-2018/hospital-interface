@@ -1,6 +1,10 @@
 class View {
 
-    static displayData(data){
+    static displayDataEmployee(data){
+        console.log(data)
+    }
+
+    static displayDataPatient(data){
         console.log(data)
     }
 

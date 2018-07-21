@@ -3,7 +3,7 @@
     "id": 1,
     "username": "harles",
     "password": 12345,
-    "role": "dokter",
+    "role": "doctor",
     "status_login": false
   },
   {
