@@ -19,6 +19,10 @@ class Interface {
             this.data.loginEmployee(username,password)
         } else if (command === 'logout'){
             this.data.logOutEmployee()
+        } else if (command === 'addpatient'){
+            let name = argv[1]
+            let diagnosis = argv.slice(2)
+            this.data.addPatient(name,diagnosis)
         }
     }
 }

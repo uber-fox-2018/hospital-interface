@@ -1,1 +1,1 @@
-[{"role":"doctor","username":"brian","password":"999","loginStatus":true},{"role":"officeboy","username":"udin","password":"999","loginStatus":false}]
+[{"position":"doctor","username":"brian","password":"999","loginStatus":false},{"position":"officeboy","username":"ujang","password":"999","loginStatus":false}]

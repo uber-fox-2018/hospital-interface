@@ -2,7 +2,7 @@ const fs = require('fs')
 
 class Employee {
     constructor(username, password, role) {
-      this.role = role
+      this.position = role
       this.username = username
       this.password = password
       this.loginStatus = false
@@ -10,9 +10,7 @@ class Employee {
 
     static readFile(cb){
         fs.readFile('./employee.json','utf8',(err,employeeData)=>{
-            if(err) {
-                throw err;
-            }
+            if(err) throw err;
             let data = JSON.parse(employeeData)
             cb(data)
         })
@@ -27,25 +25,36 @@ class Employee {
 
     static add(username,pass,position,cb){
         this.readFile(jsonObjects => {
-            let obj = new Employee(username,pass,position)
-            jsonObjects.push(obj);
+            let employee = new Employee(username,pass,position)
+            jsonObjects.push(employee);
             this.writeFile(jsonObjects);
-            cb(null,obj.username,obj.role,jsonObjects.length)
+            cb(employee.username,employee.position,jsonObjects.length)
         })
     }
 
     static login(username,password,cb){
         this.readFile(jsonObjects => {
-            jsonObjects.forEach(data => {
-                if (data.loginStatus === true){
-                    console.log(data.username)
+            let inUse = false
+            jsonObjects.forEach(data=>{
+                if (data.loginStatus===true){
+                    inUse = true
                 }
-                if (data.username === username && data.password === password && data.loginStatus === false) {
-                    data.loginStatus = true
-                    this.writeFile(jsonObjects);
-                    cb(null,data.loginStatus)
-                } 
-            });
+            })
+            if (!inUse){
+                let match = false
+                jsonObjects.forEach(data => {
+                    if (username===data.username && password===data.password) {
+                        data.loginStatus = true
+                        this.writeFile(jsonObjects)
+                        match = true    
+                    }
+                });
+                cb(match)
+            } else if(inUse === true) {
+                let match = undefined
+                cb(match)
+            }
+
         })
     }
 
@@ -59,8 +68,6 @@ class Employee {
             })
         })
     }
-
-
 }
 
 

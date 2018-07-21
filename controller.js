@@ -9,22 +9,27 @@ class Controller{
     }
 
     addEmployee(username,pass,position){
-        Employee.add(username,pass,position, (err,name,role,length) => {
-            if (err) throw err
+        Employee.add(username,pass,position, (name,role,length) => {
             View.showEmployee(name,role,length)
         })
     }
 
     loginEmployee(username,password){
-        Employee.login(username,password, (err,status)=>{
-            if (err) throw err
+        Employee.login(username,password,status=>{
             View.showLogin(status)
         })
+        
     }
 
     logOutEmployee(){
         Employee.logOut()
         View.showLogOut()
+    }
+
+    addPatient(name,diagnosis){
+        Patient.addPatient(name,diagnosis,status => {
+            View.showAddPatient(status)
+        })
     }
 }
 

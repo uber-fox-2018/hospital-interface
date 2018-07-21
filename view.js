@@ -8,10 +8,12 @@ class View {
     }
 
     static showLogin(status){
-        if (status === false){
-            console.log(`other user is logged in`)
-        } else {
+        if (status === true){
             console.log(`logged in successfully`)
+        } else if (status===false) {
+            console.log('wrong password or username')
+        } else if (status === undefined) {
+            console.log('other user is currently logged in')
         }
     }
 
@@ -19,6 +21,13 @@ class View {
         console.log('logged out successfully')
     }
 
+    static showAddPatient(status){
+        if (status === false){
+            console.log('you dont have access to add patient')
+        } else {
+            console.log(`added patient successfully. total patients: ${status}`)
+        } 
+    }
 }
 
 
