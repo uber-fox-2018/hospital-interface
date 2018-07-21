@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "andi",
+        "disease": [
+            "Flu"
+        ],
+        "createdAt": "7/21/2018"
+    },
+    {
+        "id": 2,
+        "name": "Ari",
+        "disease": [
+            "Batuk"
+        ],
+        "createdAt": "7/21/2018"
+    }
+]
