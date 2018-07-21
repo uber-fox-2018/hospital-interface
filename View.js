@@ -1,6 +1,13 @@
 class View {
     static help() {
         console.log("RUMAH SAKIT SETIA BINGIT");
+        console.log("$_  node index help")
+        console.log("$_  node index Employee")
+        console.log("$_  node index Patient")
+        console.log("$_  node index register <username> <password> <role> <firstname> Mlastname>")
+        console.log("$_  node index addPatient <name> <disease 1> <disease 2> ... <disease n>")
+        console.log("$_  node index login <username> <password>")
+        console.log("$_  node index logout")
     }
 
     static DisplayEmployee(employeeData) {
