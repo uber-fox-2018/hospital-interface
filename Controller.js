@@ -31,20 +31,21 @@ class Controller {
     login(username = this.perintah[1], password = this.perintah[2]) {
         Model.ReadEmployee((data) => {
             let dataEmployee = data;
+            var message = '';
             for(let i in dataEmployee) {
-                var message = '';
-                if(dataEmployee[i].login == true) {
-                    message = 'Maaf, Sedang ada yang login'
-                    View.DisplayLogin(message);
+                if(dataEmployee[i].login == true && dataEmployee[i].username == this.perintah[1]) {
+                    message = `Anda sedang login dengan user ${ this.perintah[1] }`
+                } else if(dataEmployee[i].login == true && dataEmployee[i].username != this.perintah[1]) {
+                    message = 'Maaf, Sedang ada user lain yang login'
                 } else if(username == dataEmployee[i].username && password == dataEmployee[i].password) {
                     this.employee = dataEmployee;
                     this.employee[i].login = true;
                     Model.registerEmployee(this.employee);
                     message = `Selamat datang ${ dataEmployee[i].username } `
-                    View.DisplayLogin(message);
                     this.employee = [];
                 }
-            }
+            } View.DisplayLogin(message);
+
         });
     }
 
