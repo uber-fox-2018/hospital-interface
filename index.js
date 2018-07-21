@@ -7,9 +7,11 @@ const Controller = require("./controller");
 
 let controller = new Controller();
 
+console.log(argv);
+
 switch (command) {
-  case undefined || "help":
-    controller.c_help();
+  case undefined:
+    Controller.c_help();
     break;
 
   case "register":
@@ -28,13 +30,13 @@ switch (command) {
     name = argv[1];
     data = argv.slice(2);
     diagnosis = data.join(",");
-    console.log(argv,diagnosis);
+    console.log(argv, diagnosis);
 
     Controller.c_addPatient(name, diagnosis);
     break;
 
   case "logout":
+    username = argv[1];
     Controller.c_logout(username);
     break;
-
 }

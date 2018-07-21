@@ -1,11 +1,11 @@
 class Patient {
-  constructor(name, diagnosis, ) {
+  constructor(name, diagnosis) {
     // this.id = id;
     this.name = name;
     this.diagnosis = diagnosis;
   }
 
-  addPatient(){
+  addPatient() {
     let database = JSON.parse(fs.readFileSync("./patient.json"));
 
     if (database.length === 0) {
@@ -76,8 +76,12 @@ class Model {
 
   static m_login(username, password, cb) {
     let info;
+
     Model.readFileDB("./db.json", dataFile => {
       let loginStatus = true;
+      if (username == undefined || password == undefined) {
+        info = `username atau password anda tidak terisi`;
+      }
 
       dataFile.filter(function(data) {
         if (data.loginStatus == true) {
@@ -87,19 +91,26 @@ class Model {
       });
 
       if (loginStatus) {
-        let loginEffort = dataFile.filter(function(data) {
-          if (data.name == username && data.password == password) {
-            data.loginStatus = true;
+
+        dataFile.forEach(element => {
+          
+          if (element.name != username && element.password != password) {
+            info = `username atau password salah`;
           }
-          return data.username;
-          console.log(data);
+          // console.log(element);
+          
         });
 
-        if (username == undefined && password == undefined) {
-          info = "false username or password";
-        } else {
-          info = `user ${username} has successfully logged in`;
-        }
+        let loginEffort = dataFile.filter(function(data) {
+          
+          if (data.name == username && data.password == password) {
+            data.loginStatus = true;
+            info = `user ${username} has successfully logged in`;
+          }
+          return data.username;
+        });
+
+
         let database = JSON.stringify(dataFile);
         Model.writeFileDB("./db.json", database, () => {});
         cb(info);
@@ -114,11 +125,11 @@ class Model {
     Model.readFileDB("./db.json", dataFile => {
       let isDokter = false;
       dataFile.filter(function(data) {
-        if (data.position == `dokter` && data.loginStatus==true) {
+        if (data.position == `dokter` && data.loginStatus == true) {
           isDokter = true;
-        }else{
-          info = `anda bukan dokter enyahlah`
-        }        
+        } else {
+          info = `anda bukan dokter enyahlah`;
+        }
       });
       if (isDokter == true) {
         let patient = new Patient(name, diagnosis);
@@ -127,19 +138,35 @@ class Model {
           dataFilePatient.push(patient);
           let newData = JSON.stringify(dataFilePatient);
           Model.writeFileDB("./patient.json", newData, () => {
-             info = `add patient success ${JSON.stringify(
+            info = `add patient success ${JSON.stringify(
               patient
             )}. Total patient : ${dataFilePatient.length}`;
             cb(info);
           });
         });
-      }else{
-        cb(info)
+      } else {
+        cb(info);
       }
     });
   }
 
-  // static 
+  static m_logout(username, cb) {
+    let info;
+    Model.readFileDB("./db.json", dataFile => {
+      dataFile.find(function(find) {
+        if (username == find.name && find.loginStatus == true) {
+          find.loginStatus = false;
+          console.log(`niceeeeeeee`);
+          info = `username ${find.name} berhasil logout`;
+        }
+        // console.log(dataFile);
+      });
+
+      let newData = JSON.stringify(dataFile);
+      Model.writeFileDB("./db.json", newData, () => {});
+      cb(info);
+    });
+  }
 }
 
 const model = new Model("./db.json");

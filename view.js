@@ -1,14 +1,5 @@
 class View {
-  // static call(help){
-  //     console.log(`please input help for more information`)
-  // }
-  // static info(){
-  //     console.log('please add username/password')
-  // }
-  // static show(message){
-  //     console.log(message)
-  // }
-
+ 
   static v_help() {
     console.log("--------------------help-------------------");
     console.log("node index.js register [username] [pass] [role]");

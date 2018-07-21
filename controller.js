@@ -7,6 +7,10 @@ class Controller {
     this.view = new View();
   }
 
+  static c_help(){
+    View.v_help()
+  }
+
   static c_register(username, password, position) {
     Model.m_register(username, password, position, msg => {
       View.display(msg);
