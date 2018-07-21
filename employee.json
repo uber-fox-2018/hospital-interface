@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "username": "asrulh",
+        "password": "12345",
+        "role": "admin",
+        "login": false,
+        "first_name": "Asrul",
+        "last_name": "Harahap",
+        "createdAt": "7/18/2018"
+    },
+    {
+        "id": 2,
+        "username": "minzard",
+        "password": "12345",
+        "role": "office_boy",
+        "login": false,
+        "first_name": "Minzard",
+        "last_name": "Diniyah",
+        "createdAt": "7/18/2018"
+    },
+    {
+        "id": 3,
+        "username": "kodi",
+        "password": "12345",
+        "role": "reseptionist",
+        "login": false,
+        "first_name": "Kodi",
+        "last_name": "Anwar",
+        "createdAt": "7/18/2018"
+    },
+    {
+        "id": 4,
+        "username": "apip",
+        "password": "12345",
+        "role": "docter",
+        "login": false,
+        "first_name": "Apip",
+        "last_name": "Sato",
+        "createdAt": "7/18/2018"
+    },
+    {
+        "id": 5,
+        "username": "talkasrul",
+        "password": "1234",
+        "role": "admin",
+        "login": false,
+        "first_name": "Asrul",
+        "last_name": "Harahap",
+        "createdAt": "7/20/2018"
+    },
+    {
+        "id": 6,
+        "username": "ridho",
+        "password": "123",
+        "role": "admin",
+        "login": false,
+        "first_name": "ridho",
+        "last_name": "aulia",
+        "createdAt": "7/20/2018"
+    }
+]
