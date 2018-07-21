@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "andi",
+        "disease": [
+            "Flu"
+        ],
+        "createdAt": "7/21/2018"
+    },
+    {
+        "id": 2,
+        "name": "Ari",
+        "disease": [
+            "Batuk"
+        ],
+        "createdAt": "7/21/2018"
+    },
+    {
+        "id": 3,
+        "name": "Ali",
+        "disease": [
+            "Batuk"
+        ],
+        "createdAt": "7/21/2018"
+    },
+    {
+        "id": 4,
+        "name": "Andri",
+        "disease": [
+            "batuk",
+            "filek",
+            "panas",
+            "dingin"
+        ],
+        "createdAt": "7/21/2018"
+    }
+]
