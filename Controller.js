@@ -12,8 +12,10 @@ class Controller {
     command() {
         if(this.perintah.length === 0 || this.perintah[0] == 'help') {
             this.help();
-        } else if(this.perintah[0] == 'read') {
-            this.read();
+        } else if(this.perintah[0] == 'Employee') {
+            this.Employee();
+        } else if(this.perintah[0] == 'Patient') {
+            this.Patient();
         } else if(this.perintah[0] == 'register') {
             this.register();
         } else if(this.perintah[0] == 'login') {
@@ -25,9 +27,15 @@ class Controller {
         }
     }
 
-    read() {
+    Employee() {
         Model.ReadEmployee((data) => {
             View.DisplayEmployee(data)
+        });
+    }
+
+    Patient() {
+        Model.ReadPatient((data) => {
+            View.DisplayPatient(data)
         });
     }
 
@@ -46,9 +54,14 @@ class Controller {
                     let newPatient = {
                         "id": id,
                         "name": this.perintah[1],
-                        "disease": [this.perintah[2]],
+                        "disease": [],
                         "createdAt": tgl
                     };
+
+                    let disease = this.perintah.slice(2);
+                    for(let i in disease) {
+                        newPatient.disease.push(disease[i]);
+                    }
                     this.patient.push(newPatient);
                     Model.addPatient(this.patient);
                     this.patient = [];

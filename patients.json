@@ -14,5 +14,24 @@
             "Batuk"
         ],
         "createdAt": "7/21/2018"
+    },
+    {
+        "id": 3,
+        "name": "Ali",
+        "disease": [
+            "Batuk"
+        ],
+        "createdAt": "7/21/2018"
+    },
+    {
+        "id": 4,
+        "name": "Andri",
+        "disease": [
+            "batuk",
+            "filek",
+            "panas",
+            "dingin"
+        ],
+        "createdAt": "7/21/2018"
     }
 ]

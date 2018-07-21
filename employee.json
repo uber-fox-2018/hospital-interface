@@ -34,20 +34,10 @@
         "username": "apip",
         "password": "12345",
         "role": "docter",
-        "login": false,
+        "login": true,
         "first_name": "Apip",
         "last_name": "Sato",
         "createdAt": "7/18/2018"
-    },
-    {
-        "id": 5,
-        "username": "talkasrul",
-        "password": "1234",
-        "role": "admin",
-        "login": false,
-        "first_name": "Asrul",
-        "last_name": "Harahap",
-        "createdAt": "7/20/2018"
     },
     {
         "id": 6,
