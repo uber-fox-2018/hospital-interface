@@ -2,20 +2,21 @@ const View = require("./view.js");
 const Model = require("./model.js");
 
 class Controller{
-    static showData(){
-        Model.read(Controller.readHandler);
-    }
-    static readHandler(data){
-        View.display(data)
-    }
-
     static registration(username, password, role){
+        //Option 1. using object literal
         let employeeObj = {username : username, password : password, role : role, isLoggin : false};
         Model.add(employeeObj, jsonData => {
             View.display(employeeObj, jsonData);
         })
-    }
 
+        //Option 2. using class Employee
+        // Model.register(username, password, role, staffObj => {
+        //     Model.add(staffObj, jsonData => {
+        //         View.display(staffObj, jsonData);
+        //     })
+        // })
+    }
+    
     static login(username, password){
         Model.checkLogin(username, password, result => {
             View.login(username, result);

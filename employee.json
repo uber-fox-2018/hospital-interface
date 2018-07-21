@@ -18,12 +18,6 @@
     "isLoggin": true
   },
   {
-    "username": "james",
-    "password": "222222",
-    "role": "dokter",
-    "isLoggin": false
-  },
-  {
     "username": "susi",
     "password": "666666",
     "role": "receptionist",
@@ -45,6 +39,18 @@
     "username": "barbie",
     "password": "554433",
     "role": "receptionist",
+    "isLoggin": false
+  },
+  {
+    "username": "renold",
+    "password": "888888",
+    "role": "dokter",
+    "isLoggin": false
+  },
+  {
+    "username": "damdam",
+    "password": "898989",
+    "role": "officeboy",
     "isLoggin": false
   }
 ]

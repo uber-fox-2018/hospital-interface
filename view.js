@@ -40,12 +40,13 @@ class View{
 
     static help(){
         console.log(chalk.cyan("======================================================================"));
-        console.log("Welcome to 🏥  Hospital Cepat Sembuh! Here you can: \n")
-        console.log(chalk.green("1) register <username> <password> <role>"));
-        console.log(chalk.yellow("2) login <username> <password>"));
-        console.log(chalk.magenta("3) logout username"));
-        console.log("And...If a 'dokter' is logged in, he/she also can: ");
-        console.log(chalk.blue("4) addPatient <number> <name> <illness_1> <illness_2> ... <illness_N>"));
+        console.log(chalk.whiteBright("Welcome to 🏥  Hospital Cepat Sembuh! Choose the menu: 🖍 \n"));
+        console.log(chalk.keyword('orange')("1) help"));
+        console.log(chalk.green("2) register <username> <password> <role>"));
+        console.log(chalk.yellow("3) login <username> <password>"));
+        console.log(chalk.magenta("4) logout username"));
+        console.log(chalk.whiteBright("And...If a 'dokter' is logged in, he/she also can: "));
+        console.log(chalk.blue("5) addPatient <number> <name> <illness_1> <illness_2> ... <illness_N>"));
         console.log(chalk.cyan("======================================================================"));
     }
 }

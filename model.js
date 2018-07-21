@@ -13,17 +13,19 @@ class Employee{
         this.username = username
         this.password = password
         this.role = role
+        this.isLoggin = false
     }
 
 }
 
 class Model{
+    //creating new employee
     static register(username, password, role, cb){
         let newStaff = new Employee(username, password, role);
         let staffObj = Object.assign({},newStaff);
         cb(staffObj);
-       
     }
+
     //read employee.json / patient.json and "returning" array of objects via callback
     static read(path, cbRead){
         fs.readFile(path, 'utf-8', function(err,peopleData){
@@ -74,6 +76,7 @@ class Model{
           }
         })
     }
+
     //add new patient ONLY by 'dokter'
     static addPatient(patientObj,cb){
          //1. check if the user is a doctor AND he/she is already logged in
@@ -99,6 +102,7 @@ class Model{
                 }
         })
     }
+    
     //logout user
     static logout(username,cb){
         Model.read("./employee.json", jsonData => {
