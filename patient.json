@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "name": "Lily",
+      "diagnosis": [
+        "batuk"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Kiko",
+      "diagnosis": [
+        "masuk angin",
+        "muntaber"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Khalessi",
+      "diagnosis": [
+        "sakit gigi",
+        "mules"
+      ]
+    }
+]
