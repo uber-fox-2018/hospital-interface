@@ -5,9 +5,9 @@ const View = require('./view.js')
 class Controller {
 
     static register_employee(name, position, username, password){
-        modEmployee.register_employee(name, position, username, password, (data) => {
-            let currentTotalData = data[1]
-            let temp = `username: ${username}\nposition: ${position}\nsuccessfully registered...\n\nTotal employee : ${currentTotalData}`
+        modEmployee.register_employee(name, position, username, password, (data_employee) => {
+            let currentTotalData = data_employee[1]
+            let temp = `Username : ${username}\nPosition : ${position}\n Successfully registered...\n\nTotal employee : ${currentTotalData}`
             View.display(temp)
         })
     }
@@ -22,7 +22,7 @@ class Controller {
                 result += `You cant login becasuse, someone already login\nPlease type <logout> <username>`
             }else {
                 if (err === true){
-                    result += `${username} login successful...`
+                    result += `Username : ${username} login successful...`
                 }
             }
             View.display(result)
@@ -33,7 +33,7 @@ class Controller {
         modEmployee.logout_employee(username, (err) => {
             let result =''
             if (err === true){
-                result += `${username} logout successful...`
+                result += `Username : ${username} logout successful...`
             }else {
                 result += `You entered the wrong username...`
             }
@@ -41,8 +41,19 @@ class Controller {
         })
     }
   
-    static addPatient(){
-        
+    static addPatient(name, diagnosis){
+        modPatient.addPatient(name, diagnosis, (data_patient, isDoctor) => {
+            let result =''
+            
+            if (isDoctor === undefined && data_patient !== null){
+                result += `You dont have access to add Patient...`
+            }else if (data_patient === null){
+                result += `Please type name or diagnosis correctly...`
+            }else {
+                result += `Name : ${name} | Diagnosis : ${diagnosis} | Add successful...\n\nTotal Patient : ${data_patient}`
+            }
+            View.display(result)
+        })
     }
 }
 module.exports= Controller

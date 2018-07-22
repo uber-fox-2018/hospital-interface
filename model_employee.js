@@ -10,44 +10,44 @@ class Employee {
   }
   
   static readListEmployee (callback_read){
-    fs.readFile('./employee.json', 'utf8', (err,data) => {
+    fs.readFile('./employee.json', 'utf8', (err,data_employee) => {
       if (err) throw err
-      callback_read(JSON.parse(data))
+      callback_read(JSON.parse(data_employee))
     })
   }
 
-  static writeListEmployee (data, callback_write){
-    fs.writeFile('./employee.json', JSON.stringify(data), (err) => {
+  static writeListEmployee (data_employee, callback_write){
+    fs.writeFile('./employee.json', JSON.stringify(data_employee), (err) => {
       if (err) throw err
       callback_write()
     })
   }
 
   static register_employee (name, position, username, password, callback_register){
-    Employee.readListEmployee((data) => {
+    Employee.readListEmployee((data_employee) => {
       let employee = new Employee (name, position, username, password)
-      data == 0 ? employee.id = 1 : employee.id = data.length + 1
-      data.push(employee)
-      let temp = [employee, data.length]
-      Employee.writeListEmployee(data, function() {
+      data_employee == 0 ? employee.id = 1 : employee.id = data_employee.length + 1
+      data_employee.push(employee)
+      let temp = [employee, data_employee.length]
+      Employee.writeListEmployee(data_employee, function() {
         callback_register(temp)
       })
     })
   }
 
   static login_employee(username, password, callback_login){
-    Employee.readListEmployee ((data) => {
+    Employee.readListEmployee ((data_employee) => {
       
-      let totaldata = data.length
+      let totaldata = data_employee.length
       let count = 0
       let valid = false
       let isAlreadyLogin = false
       let idxLogin = 0
 
-      for (let i = 0 ; i < data.length ; i++){
-        let user = data[i].username
-        let pass = data[i].password
-        let status = data[i].logStatus
+      for (let i = 0 ; i < data_employee.length ; i++){
+        let user = data_employee[i].username
+        let pass = data_employee[i].password
+        let status = data_employee[i].logStatus
 
         if (user === username && pass === password){
           if (status === false){
@@ -67,8 +67,8 @@ class Employee {
         callback_login(false)
       }else{
         if (valid === true){
-          data[idxLogin].logStatus = true
-          Employee.writeListEmployee(data, (err) => {
+          data_employee[idxLogin].logStatus = true
+          Employee.writeListEmployee(data_employee, (err) => {
             if (err) throw err
             callback_login(true)
           })
@@ -78,12 +78,12 @@ class Employee {
 }
 
   static logout_employee(username, callback_logout){
-    Employee.readListEmployee((data) => {
+    Employee.readListEmployee((data_employee) => {
       let isValid = false
       let idxLogout = 0
-      for (let i = 0 ; i < data.length ; i++){
-        let user = data[i].username
-        let status = data[i].logStatus
+      for (let i = 0 ; i < data_employee.length ; i++){
+        let user = data_employee[i].username
+        let status = data_employee[i].logStatus
         if (user === username && status === true){
           idxLogout = i
           isValid = true
@@ -92,17 +92,13 @@ class Employee {
       if (isValid === false){
         callback_logout(null)
       }else {
-        data[idxLogout].logStatus = false
-        Employee.writeListEmployee(data, (err) => {
+        data_employee[idxLogout].logStatus = false
+        Employee.writeListEmployee(data_employee, (err) => {
           if (err) throw err
           callback_logout(true)
         })
       }
     })
   }
-
-  static addPatient(){
-      // check dokter ?
-  }
-
-}module.exports = Employee
+}
+module.exports = Employee

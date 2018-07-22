@@ -12,7 +12,7 @@ if (execute == 'register'){
 }else if (execute == 'logout'){
     Controller.logout_employee(input[0])
 }else if (execute == 'addPatient') {
-    Controller.addpatient()
+    Controller.addPatient(input[0], input[1])
 }else{
     console.log(`Please follow command below :`);
     console.log(`- register <name> <position> <username> <password> (admin only)`)
