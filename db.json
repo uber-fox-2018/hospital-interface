@@ -1,0 +1,20 @@
+[
+  {
+    "name": "adefs",
+    "password": "123",
+    "position": "dokter",
+    "loginStatus": true
+  },
+  {
+    "name": "roni",
+    "password": "1234",
+    "position": "dokter",
+    "loginStatus": false
+  },
+  {
+    "name": "kuma",
+    "password": "123",
+    "position": "nurse",
+    "loginStatus": false
+  }
+]
